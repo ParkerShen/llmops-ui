@@ -13,7 +13,7 @@ import router from "@/router"
 
 
 import ArcoVue from '@arco-design/web-vue';
-import '@/assets/main.css'
+import '@/assets/styles/main.css'
 
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
 

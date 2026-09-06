@@ -37,6 +37,11 @@ const routes: RouteRecordRaw[] = [
         meta: { title: '登录' },
         component: () => import('@/views/auth/LoginView.vue'),
       },
+      {
+  path: 'space/apps/:app_id',
+  name: 'space-apps-detail',
+  component: () => import('@/views/space/apps/DetailView.vue'),
+},
     ],
   },
 ]
