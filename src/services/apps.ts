@@ -23,11 +23,15 @@ export interface AppForm {
   [key: string]: unknown
 }
 
-/** /app/completion 补全入参 */
+/** /app/completion 补全入参(query 必填,后端 CompletionReq 校验 1~1000 字) */
 export interface CompletionParams {
-  app_id: string
-  query?: string
+  query: string
   [key: string]: unknown
+}
+
+/** POST /app/completion 返回:后端统一信封解包后,data 的结构是 { content } */
+export interface CompletionResult {
+  content: string
 }
 
 export const appsApi = {
@@ -58,7 +62,7 @@ export const appsApi = {
 
   /** 补全 POST /app/completion */
   completion(params: CompletionParams) {
-    return http.post<{ data: string }>('/app/completion', params)
+    return http.post<CompletionResult>('/app/completion', params)
   },
 }
 

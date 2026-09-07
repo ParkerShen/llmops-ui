@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2026-09-06 16:54:46
+ * @Author: parker
+ * @FilePath: \llmops-apic:\Users\96082\Desktop\code\llmops\llmops-ui\src\views\space\apps\ListView.vue
+ * @Description: 
+-->
 <script setup lang="ts">
 /**
  * 演示把页面数据交给 Pinia store 管理:
@@ -13,11 +19,11 @@ const store = useAppsStore()
 const { list, loading, error } = storeToRefs(store)
 
 onMounted(() => {
-  store.fetchApps()
+  // store.fetchApps()
 })
 
 function retry() {
-  store.fetchApps()
+  // store.fetchApps()
 }
 </script>
 
