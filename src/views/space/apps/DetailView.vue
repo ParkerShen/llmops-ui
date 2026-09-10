@@ -7,8 +7,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { Message } from '@arco-design/web-vue'
 import { appsApi } from '@/services/apps'
+// 路由是 space/apps/:app_id,调试接口需要把 app_id 放进 URL
+const route = useRoute()
 const query = ref('')
 const messages = ref<{ roles: string; content: string }[]>([])
 const isLoading = ref(false)
@@ -38,10 +41,10 @@ const send = async () => {
 
     query.value = ''
 
-    // 5. 发起 api 请求(示例:POST /app/completion)
+    // 5. 发起 api 请求 POST /app/{app_id}/debug
     isLoading.value = true
     try {
-        const data = await appsApi.completion({ query: humanQuery })
+        const data = await appsApi.debug(String(route.params.app_id), { query: humanQuery })
         // 6. AI 回复来自后端统一信封的 data.content
         messages.value.push({ roles: 'ai', content: data.content })
     } catch (e) {

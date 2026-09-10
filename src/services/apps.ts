@@ -64,6 +64,11 @@ export const appsApi = {
   completion(params: CompletionParams) {
     return http.post<CompletionResult>('/app/completion', params)
   },
+
+  /** 调试对话 POST /app/{id}/debug */
+  debug(id: string, params: CompletionParams) {
+    return http.post<CompletionResult>(`/app/${id}/debug`, params)
+  },
 }
 
 export default appsApi
